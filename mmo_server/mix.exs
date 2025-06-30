@@ -40,7 +40,7 @@ defmodule MmoServer.MixProject do
       {:libcluster, "~> 3.3"},
       {:horde, "~> 0.8"},
       {:delta_crdt, "~> 0.6"},
-      {:broadway, "~> 1.0"},
+      {:gen_stage, "~> 1.1"},
       {:absinthe, "~> 1.7"},
       {:absinthe_phoenix, "~> 2.0"},
       {:plug_cowboy, "~> 2.6"},

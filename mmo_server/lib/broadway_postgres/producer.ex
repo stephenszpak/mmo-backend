@@ -1,8 +1,8 @@
 defmodule BroadwayPostgres.Producer do
   @moduledoc """
-  Minimal stub for BroadwayPostgres producer used in tests.
+  Minimal GenStage producer stub used in tests.
   This implementation does not actually read from Postgres
-  but satisfies the expected behaviour of a Broadway producer.
+  but provides a producer that can be subscribed to by consumers.
   """
   use GenStage
 
