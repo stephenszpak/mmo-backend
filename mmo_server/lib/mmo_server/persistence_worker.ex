@@ -17,7 +17,7 @@ defmodule MmoServer.PersistenceWorker do
   end
 
   @impl true
-  def handle_message(_, %Message{data: data} = message, _) do
+  def handle_message(_, %Message{data: _data} = message, _) do
     # persist data using Repo
     message
   end
