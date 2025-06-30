@@ -1,5 +1,4 @@
-
-FROM elixir:1.17.4-alpine
+FROM elixir:1.17-alpine
 
 WORKDIR /app/mmo_server
 # Install build tools needed for dependencies like postgrex
