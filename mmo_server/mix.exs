@@ -41,7 +41,6 @@ defmodule MmoServer.MixProject do
       {:horde, "~> 0.8"},
       {:delta_crdt, "~> 0.6"},
       {:broadway, "~> 1.0"},
-      {:broadway_postgres, "~> 0.4"},
       {:absinthe, "~> 1.7"},
       {:absinthe_phoenix, "~> 2.0"}
     ]
