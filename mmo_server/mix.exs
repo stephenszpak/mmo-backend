@@ -23,6 +23,13 @@ defmodule MmoServer.MixProject do
     ]
   end
 
+  defp aliases do
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate", "seed"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"]
+    ]
+  end
+
   defp deps do
     [
       {:phoenix, "~> 1.7"},
