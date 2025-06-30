@@ -1,6 +1,6 @@
-# Use the Hex.pm maintained image with a patch release of Elixir that
-# avoids the compilation error present in 1.17.3.
-FROM hexpm/elixir:1.17.4-erlang-26.2-alpine
+
+FROM elixir:1.17.4-alpine
+
 WORKDIR /app/mmo_server
 # Install build tools needed for dependencies like postgrex
 RUN apk add --no-cache build-base git
