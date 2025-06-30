@@ -1,24 +1,20 @@
 defmodule MmoServer.PersistenceWorker do
   @moduledoc """
-  Broadway pipeline persisting game state to Postgres.
+  GenStage pipeline persisting game state to Postgres.
   """
-  use Broadway
-  alias Broadway.Message
+  use Supervisor
 
-  def start_link(_opts) do
-    Broadway.start_link(__MODULE__,
-      name: __MODULE__,
-      producer: [
-        module: {BroadwayPostgres.Producer, []},
-        concurrency: 1
-      ],
-      processors: [default: [concurrency: 1]]
-    )
+  def start_link(opts) do
+    Supervisor.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
   @impl true
-  def handle_message(_, %Message{data: _data} = message, _) do
-    # persist data using Repo
-    message
+  def init(_opts) do
+    children = [
+      {BroadwayPostgres.Producer, name: BroadwayPostgres.Producer},
+      {MmoServer.PersistenceConsumer, [producer: BroadwayPostgres.Producer]}
+    ]
+
+    Supervisor.init(children, strategy: :rest_for_one)
   end
 end
