@@ -1,6 +1,6 @@
-# Use the official Elixir image with patch release 1.17.4 which
-# avoids the compilation error present in 1.17.3.
+
 FROM elixir:1.17.4-alpine
+
 WORKDIR /app/mmo_server
 # Install build tools needed for dependencies like postgrex
 RUN apk add --no-cache build-base git
