@@ -1,7 +1,7 @@
 FROM elixir:1.17
-WORKDIR /app
+WORKDIR /app/mmo_server
 ENV MIX_ENV=prod
-COPY . .
+COPY mmo_server/ .
 RUN mix local.hex --force && \
     mix local.rebar --force && \
     mix deps.get --only prod && \
