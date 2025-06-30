@@ -32,7 +32,7 @@ defmodule MmoServer.MixProject do
       {:postgrex, ">= 0.17.0"},
       {:libcluster, "~> 3.3"},
       {:horde, "~> 0.8"},
-      {:delta_crdt_ex, "~> 0.6"},
+      {:delta_crdt, "~> 0.6"},
       {:broadway, "~> 1.0"},
       {:broadway_postgres, "~> 0.4"},
       {:absinthe, "~> 1.7"},
