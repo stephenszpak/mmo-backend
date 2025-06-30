@@ -1,4 +1,5 @@
-FROM elixir:1.17
+# Use a patched Elixir image to avoid compilation failures with Broadway
+FROM elixir:1.17.4
 WORKDIR /app/mmo_server
 # Compile the application in the same environment that docker-compose
 # uses for running the container. This avoids requiring production only
