@@ -42,7 +42,9 @@ defmodule MmoServer.MixProject do
       {:delta_crdt, "~> 0.6"},
       {:broadway, "~> 1.0"},
       {:absinthe, "~> 1.7"},
-      {:absinthe_phoenix, "~> 2.0"}
+      {:absinthe_phoenix, "~> 2.0"},
+      {:plug_cowboy, "~> 2.6"},
+      {:jason, "~> 1.4"}
     ]
   end
 end
