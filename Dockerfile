@@ -1,15 +1,19 @@
-# Use the official Elixir image. The 1.17.4 tag does not exist yet,
-# so we fall back to the generic 1.17 tag which always resolves to the
-# latest available patch release.
-FROM elixir:1.17
+# Use the Hex.pm maintained image with a patch release of Elixir that
+# avoids the compilation error present in 1.17.3.
+FROM hexpm/elixir:1.17.4-erlang-26.2-alpine
 WORKDIR /app/mmo_server
-# Compile the application in the same environment that docker-compose
-# uses for running the container. This avoids requiring production only
-# configuration such as `SECRET_KEY_BASE` during image build.
+# Install build tools needed for dependencies like postgrex
+RUN apk add --no-cache build-base git
+
+# Install Hex and Rebar and fetch dependencies separately so Docker can
+# cache the layers when the dependency manifest doesn't change.
 ENV MIX_ENV=dev
-COPY mmo_server/ .
+COPY mmo_server/mix.exs mmo_server/mix.lock ./
 RUN mix local.hex --force && \
     mix local.rebar --force && \
-    mix deps.get && \
-    mix compile
+    mix deps.get
+
+# Copy the rest of the source and compile
+COPY mmo_server/ ./
+RUN mix compile
 CMD ["mix", "phx.server"]
