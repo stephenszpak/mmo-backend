@@ -4,7 +4,7 @@ config :mmo_server, MmoServer.Repo,
   username: "postgres",
   password: "postgres",
   database: "mmo_server_dev",
-  hostname: "localhost",
+  hostname: System.get_env("DATABASE_HOST") || "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
